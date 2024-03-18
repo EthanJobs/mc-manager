@@ -32,6 +32,7 @@ export function setupInterceptors(axiosInstance) {
 
   const SUCCESS_CODES = [0, 200]
   function resResolve(response) {
+    if (response.config.baseURL === '/minecraft') return Promise.resolve(response.data)
     const { data, status, config, statusText, headers } = response
     if (headers['content-type']?.includes('json')) {
       if (SUCCESS_CODES.includes(data?.code)) {

@@ -21,7 +21,7 @@
         </KeepAlive>
       </component>
 
-      <LayoutSetting class="fixed right-12 top-1/2 z-999" />
+      <!-- <LayoutSetting class="fixed right-12 top-1/2 z-999" /> -->
     </router-view>
   </n-config-provider>
 </template>

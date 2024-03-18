@@ -70,6 +70,12 @@ export default defineConfig(({ command, mode }) => {
             })
           },
         },
+        '/minecraft': {
+          target: 'https://api.mojang.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(new RegExp('^/minecraft'), ''),
+          secure: false,
+        },
       },
     },
     build: {

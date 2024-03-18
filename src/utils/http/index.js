@@ -12,6 +12,7 @@ import { setupInterceptors } from './interceptors'
 
 export function createAxios(options = {}) {
   const defaultOptions = {
+    // baseURL: 'http://47.98.195.152:2002/api',
     baseURL: '/api',
     timeout: 12000,
   }
@@ -27,4 +28,8 @@ export const request = createAxios()
 
 export const mockRequest = createAxios({
   baseURL: '/mock-api',
+})
+
+export const minecraftRequest = createAxios({
+  baseURL: '/minecraft',
 })
