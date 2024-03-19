@@ -76,6 +76,12 @@ export default defineConfig(({ command, mode }) => {
           rewrite: (path) => path.replace(new RegExp('^/minecraft'), ''),
           secure: false,
         },
+        '/skin': {
+          target: 'https://sessionserver.mojang.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(new RegExp('^/skin'), ''),
+          secure: false,
+        }
       },
     },
     build: {

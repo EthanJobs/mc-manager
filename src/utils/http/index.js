@@ -33,3 +33,7 @@ export const mockRequest = createAxios({
 export const minecraftRequest = createAxios({
   baseURL: '/minecraft',
 })
+
+export const skinRequest = createAxios({
+  baseURL: '/skin',
+})
