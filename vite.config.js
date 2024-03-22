@@ -87,7 +87,13 @@ export default defineConfig(({ command, mode }) => {
           changeOrigin: true,
           rewrite: (path) => path.replace(new RegExp('^/mcServer'), ''),
           secure: false,
-        }
+        },
+        '/cardHead': {
+          target: 'https://crafatar.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(new RegExp('^/cardHead'), ''),
+          secure: false,
+        },
       },
     },
     build: {

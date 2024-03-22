@@ -41,3 +41,8 @@ export const skinRequest = createAxios({
 export const mcServerRequest = createAxios({
   baseURL: '/mcServer',
 })
+
+export const cardHeadRequest = createAxios({
+  baseURL: '/cardHead',
+  responseType: 'blob'
+})

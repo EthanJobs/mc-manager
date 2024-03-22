@@ -31,7 +31,7 @@ export function setupInterceptors(axiosInstance) {
   }
 
   const SUCCESS_CODES = [0, 200]
-  const WHITE_LIST = ['/minecraft', '/skin', '/mcServer']
+  const WHITE_LIST = ['/minecraft', '/skin', '/mcServer', '/cardHead']
   function resResolve(response) {
     if (WHITE_LIST.includes(response.config.baseURL)) return Promise.resolve(response.data)
     const { data, status, config, statusText, headers } = response

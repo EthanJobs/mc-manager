@@ -1,21 +1,19 @@
 <template>
-  <div class="flex justify-center items-center flex-col">
-    <div class="w-[400px]">
-      <!-- <div class="flex">
+  <div class="p-12">
+    <div class="flex justify-center items-center flex-col shadow-lg rounded-lg bg-[#fdfdfd]">
+      <div :style="{ width: skinWidth + 'px' }">
+        <!-- <div class="flex">
         <n-input class="m-r-4" v-model:value="playerName" @keydown.enter="getUuid"></n-input>
         <n-button :loading="loading" @click="getUuid">输入玩家名</n-button>
       </div> -->
-      <div class="w-full flex justify-center items-center">
-        {{ playerName }}
-      </div>
-      <div
-        class="flex justify-center items-center h-[600px] m-y-4"
-        style="border: 1px solid rgba(194, 194, 194, 1)"
-      >
-        <n-spin v-show="loading" />
-        <canvas ref="canvas" v-show="!loading"></canvas>
-      </div>
-      <n-radio-group v-model:value="animation" class="flex justify-center items-center">
+        <div class="w-full flex justify-center items-center">
+          {{ playerName }}
+        </div>
+        <div class="flex justify-center items-center m-y-4" :style="{ height: skinHeight + 'px' }">
+          <n-spin v-show="loading" />
+          <canvas ref="canvas" v-show="!loading"></canvas>
+        </div>
+        <!-- <n-radio-group v-model:value="animation" class="flex justify-center items-center">
         <n-space>
           <n-radio
             v-for="item in animations"
@@ -26,8 +24,9 @@
             {{ item.label }}
           </n-radio>
         </n-space>
-      </n-radio-group>
-      {{ value.Inventory }}
+      </n-radio-group> -->
+        <!-- {{ value.Inventory }} -->
+      </div>
     </div>
   </div>
 </template>
@@ -83,8 +82,10 @@ const animations = [
 const canvas = ref(null)
 const loading = ref(false)
 const playerName = ref('')
-const animation = ref('none')
+const animation = ref('walk')
 const skinViewer = ref(null)
+const skinWidth = ref(200)
+const skinHeight = ref(300)
 
 watch(
   () => props.uuid,
@@ -98,19 +99,13 @@ watch(
       const capeUrl = skinData.textures?.CAPE?.url
       playerName.value = skinBase64Data.name
 
-      await new Promise((resolve, reject) => {
-        setTimeout(() => {
-          resolve()
-        }, 1000)
-      })
-
       skinViewer.value = new skinview3d.SkinViewer({
         canvas: canvas.value,
-        width: 400,
-        height: 600,
+        width: skinWidth.value,
+        height: skinHeight.value,
         skin: skinUrl,
         cape: capeUrl,
-        panorama: 'https://bs-community.github.io/skinview3d/img/panorama.png',
+        // panorama: 'https://bs-community.github.io/skinview3d/img/panorama.png',
         animation: availableAnimations[animation.value],
       })
     } catch (err) {
@@ -121,38 +116,6 @@ watch(
   },
   { immediate: true }
 )
-
-const getUuid = async () => {
-  loading.value = true
-
-  try {
-    const uuid = await api.get_uuid(playerName.value)
-    const skinBase64Data = await api.get_skin(uuid.id)
-    const skinData = JSON.parse(atob(skinBase64Data.properties[0].value))
-    const skinUrl = skinData.textures.SKIN.url
-    const capeUrl = skinData.textures?.CAPE?.url
-
-    await new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, 1000)
-    })
-
-    skinViewer.value = new skinview3d.SkinViewer({
-      canvas: canvas.value,
-      width: 400,
-      height: 600,
-      skin: skinUrl,
-      cape: capeUrl,
-      panorama: 'https://bs-community.github.io/skinview3d/img/panorama.png',
-      animation: availableAnimations[animation.value],
-    })
-  } catch (err) {
-    $message.error('搜索失败')
-  }
-
-  loading.value = false
-}
 
 const handleChange = () => {
   skinViewer.value.animation = availableAnimations[animation.value]

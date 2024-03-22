@@ -1,4 +1,4 @@
-import { minecraftRequest, skinRequest, request, mcServerRequest } from '@/utils'
+import { minecraftRequest, skinRequest, request, mcServerRequest, cardHeadRequest } from '@/utils'
 
 export default {
     get_uuid: USERNAME => minecraftRequest.get(`/users/profiles/minecraft/${USERNAME}`),
@@ -8,5 +8,6 @@ export default {
         baseURL: 'api/file/getPlayerNbt',
         responseType: 'blob'
     }),
-    get_onlinePlayerInfo: () => mcServerRequest.get('getOnlinePlayerInfo')
+    get_onlinePlayerInfo: () => mcServerRequest.get('getOnlinePlayerInfo'),
+    get_head: UUID => cardHeadRequest.get(`/avatars/${UUID}`)
 }

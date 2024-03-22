@@ -15,7 +15,7 @@ export const basicRoutes = [
     component: () => import('@/views/home/index.vue'),
     meta: {
       title: '首页',
-      layout: 'empty',
+      layout: '',
     },
   },
 
