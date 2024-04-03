@@ -54,7 +54,6 @@ const getOnlinePlayerInfo = async () => {
         .replace(regex4, '')
     )
     nbtList.value[tmp.UUID.map((e) => int2hex(e)).join('')] = tmp
-    console.log(tmp)
   })
 }
 

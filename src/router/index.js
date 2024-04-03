@@ -38,9 +38,9 @@ export async function initUserAndPermissions() {
 
   if (!authStore.accessToken) {
     const route = unref(router.currentRoute)
-    if (route.path !== '/login') {
+    if (route.path !== '/welcome/home') {
       router.replace({
-        path: '/login',
+        path: '/welcome/home',
         query: route.query,
       })
     }

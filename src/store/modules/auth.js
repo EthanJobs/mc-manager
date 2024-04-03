@@ -23,7 +23,7 @@ export const useAuthStore = defineStore('auth', {
     toLogin() {
       const { router, route } = useRouterStore()
       router.replace({
-        path: '/login',
+        path: '/welcome',
         query: route.query,
       })
     },

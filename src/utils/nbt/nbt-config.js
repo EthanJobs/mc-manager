@@ -197,10 +197,6 @@ class nbtIterator {
         let name = getNameValue(this, nameLen)
         let value = tag.getValue(this, tag)
 
-        // console.log({ tag: tag.name, nameLen, name, value })
-
-        // console.log(this.index, this.data.length)
-
         return { tag, name, value };
     }
 }

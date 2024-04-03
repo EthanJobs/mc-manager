@@ -10,6 +10,7 @@
 
 import '@/styles/reset.css'
 import '@/styles/global.scss'
+import 'animate.css/animate.min.css'
 import 'uno.css'
 
 import { createApp } from 'vue'
