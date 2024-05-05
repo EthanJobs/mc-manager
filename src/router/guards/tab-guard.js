@@ -8,7 +8,7 @@
 
 import { useTabStore } from '@/store'
 
-export const EXCLUDE_TAB = [/\/404/, /\/403/, /\/welcome\/.*/]
+export const EXCLUDE_TAB = [/\/404/, /\/403/, /\/welcome\/.*/, /\/login/]
 
 export function createTabGuard(router) {
   router.afterEach((to) => {

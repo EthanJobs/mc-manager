@@ -9,7 +9,7 @@
 import { useAuthStore } from '@/store'
 import api from '@/api'
 
-const WHITE_LIST = [/\/welcome\/.*/, /\/404/]
+const WHITE_LIST = [/\/welcome\/.*/, /\/login/, /\/404/]
 export function createPermissionGuard(router) {
   router.beforeEach(async (to) => {
     const authStore = useAuthStore()

@@ -59,14 +59,13 @@ export const basicRoutes = [
       },
     ]
   },
-
   {
-    name: 'Home',
-    path: '/',
-    component: () => import('@/views/home/index.vue'),
+    name: 'login',
+    path: '/login',
+    component: () => import('@/views/login/index.vue'),
     meta: {
-      title: '首页',
-      layout: '',
+      title: '登录',
+      layout: 'empty',
     },
   },
 

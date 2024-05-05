@@ -28,7 +28,9 @@
           ></div>
         </div>
       </div>
-      <div class="f-c-c h-full flex-[2_1_0] bg-[#60a5fa]"></div>
+      <div class="f-c-c h-full flex-[2_1_0]">
+        <div class="bg-[#3149e7] color-[white] p-y-6 p-x-14 rounded-2xl hover:cursor-pointer hover:bg-[#60a5fa]" @click="goLogin">登录 或 注册</div>
+      </div>
     </div>
   </AppCard>
 </template>
@@ -58,6 +60,13 @@ const tabChoose = (name) => {
     name,
   })
   changeChoose(name)
+}
+
+// 登录注册页面跳转
+const goLogin = () => {
+  router.push({
+    name: 'login',
+  })
 }
 
 onMounted(() => {
