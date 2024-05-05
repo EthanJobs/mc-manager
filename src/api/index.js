@@ -21,4 +21,6 @@ export default {
   getRolePermissions: () => request.get('/role/permissions/tree'),
   // 验证菜单路径
   validateMenuPath: (path) => request.get(`/permission/menu/validate?path=${path}`),
+  // 注册
+  register: (data) => request.post('/user/account_register', data)
 }
